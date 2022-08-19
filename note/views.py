@@ -32,3 +32,15 @@ def noteListView(request):
         'notes' : notes
     }
     return render(request, 'home.html', context)
+
+# ====== take details of specific note =======
+def noteDetailsView(request, *args, **kwargs):
+    id = kwargs.get('pk')
+    try:
+        note = Note.objects.get(id = id)
+        context = {
+        'note' : note
+        }
+        return render(request, 'note-details.html', context)
+    except:
+        return redirect('home')
