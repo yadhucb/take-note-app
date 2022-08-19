@@ -74,3 +74,14 @@ class NoteEditView(View):
             return render(request, 'note-edit.html', context)
         except:
             return redirect('home')
+
+# ====== delete a perticular note =======
+def noteDeleteView(request, *args, **kwargs):
+    id = kwargs.get('pk')
+    try:
+        note = Note.objects.get(id = id)
+        note.delete()
+        messages.info(request, 'Note deleted!')
+        return redirect('home')
+    except:
+        return redirect('home')
