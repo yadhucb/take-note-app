@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib import messages
+from django.db.models import Q
 from note.models import Note
 from note.forms import NoteForm
 
@@ -27,7 +28,7 @@ class NoteAddView(View):
 
 # ====== listing all available notes ========
 def noteListView(request):
-    notes = Note.objects.all()
+    notes = Note.objects.all().order_by('-updated_at')
     context = {
         'notes' : notes
     }
@@ -44,6 +45,16 @@ def noteDetailsView(request, *args, **kwargs):
         return render(request, 'note-details.html', context)
     except:
         return redirect('home')
+
+def noteSearchView(request):
+    search_input = request.GET.get('search-input')
+    notes = Note.objects.filter(
+        Q(title__icontains = search_input) | 
+        Q(body__icontains = search_input)).order_by('-updated_at')
+    context = {
+        'notes' : notes
+    }
+    return render(request, 'home.html', context)
 
 # ====== edit a perticular note instance =======
 class NoteEditView(View):
