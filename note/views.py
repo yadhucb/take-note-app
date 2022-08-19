@@ -24,3 +24,11 @@ class NoteAddView(View):
             return redirect('home')
         messages.error(request, 'Form is not valid!')
         return render(request, 'note-add.html', context)
+
+# ====== listing all available notes ========
+def noteListView(request):
+    notes = Note.objects.all()
+    context = {
+        'notes' : notes
+    }
+    return render(request, 'home.html', context)
