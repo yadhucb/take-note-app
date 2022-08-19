@@ -10,6 +10,7 @@ Note Details
         <div class="col-lg-6">
             <div class="bg-white p-3 rounded shadow mt-3 h-100">
                 <div class="d-flex justify-content-around">
+                    <!-- date -->
                     <span class="text-muted fs-6">{{note.updated_at |date:"M d, Y"}}</span>
                     <!-- edit -->
                     <a class="" href="{% url 'note-edit' note.id %}">
@@ -71,6 +72,5 @@ Note Details
         <div class="col-lg-3"></div>
     </div>
 </div>
-
 
 {% endblock %}

@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.db.models import Q
 from note.models import Note
 from note.forms import NoteForm
+import os
 
 # ===== adding new note by using model form ===========
 class NoteAddView(View):
@@ -46,6 +47,7 @@ def noteDetailsView(request, *args, **kwargs):
     except:
         return redirect('home')
 
+# ======== note search by title and body ===========
 def noteSearchView(request):
     search_input = request.GET.get('search-input')
     notes = Note.objects.filter(
@@ -59,28 +61,30 @@ def noteSearchView(request):
 # ====== edit a perticular note instance =======
 class NoteEditView(View):
     def get(self, request, *args, **kwargs):
-            id = kwargs.get('pk')
+        id = kwargs.get('pk')
+        try:
             note_instance = Note.objects.get(id = id)
             form = NoteForm(instance=note_instance)
             context = {
                 'form' : form,
-                'image' : note_instance.image
+                'image' : note_instance.image,
+                'note' : note_instance
             }
             return render(request, 'note-edit.html', context)
-        # except:
-        #     return redirect('home')
+        except:
+            return redirect('home')
 
     def post(self, request, *args, **kwargs):
         id = kwargs.get('pk')
         try:
             note_instance = Note.objects.get(id = id)
             form = NoteForm(request.POST, request.FILES, instance=note_instance)
-            context = {
-                'form' : form
-            }
             if form.is_valid():
                 form.save()
                 return redirect('home')
+            context = {
+                'form' : form
+            }
             messages.error(request, 'Form is not valid!')
             return render(request, 'note-edit.html', context)
         except:

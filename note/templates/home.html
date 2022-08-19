@@ -10,6 +10,7 @@ Home
         <div class="col-lg-4 my-3">
             <div class="bg-white p-3 rounded shadow mt-3 h-100">
                 <div class="d-flex justify-content-around">
+                    <!-- time -->
                     <span class="text-muted fs-6">{{note.updated_at | timesince}} ago</span>
                     <!-- edit -->
                     <a class="align-items-center fs-7" href="{% url 'note-edit' note.id %}">
@@ -59,7 +60,7 @@ Home
                             {% endif %}
                             {% if not note.image %}
                             <p class=" fs-4 {% if not note.title %} pt-5 {% endif %}">
-                                {{note.body|truncatechars:150}}
+                                {{note.body|truncatechars:210}}
                             </p>
                             {% else %}
                             <p class="">
