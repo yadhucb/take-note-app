@@ -1,12 +1,12 @@
 <nav class="navbar bg-light">
     <div class="container-fluid">
-        <a href="{% url 'home' %}" class="navbar-brand">Navbar</a>
+        <a href="{% url 'home' %}" class="navbar-brand logo">TakeNote</a>
         <a href="{% url 'note-add' %}">
-            <i class="fa-solid fa-circle-plus fs-2" role="button"></i>
+            <i class="fa-solid fa-circle-plus fs-2 text-success" role="button"></i>
         </a>
         <form action="{% url 'note-search' %}" class="d-flex" role="search">
             <input class="form-control me-2" name="search-input" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button class="btn btn-outline-dark" type="submit">Search</button>
         </form>
     </div>
 </nav>
