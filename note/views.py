@@ -44,3 +44,33 @@ def noteDetailsView(request, *args, **kwargs):
         return render(request, 'note-details.html', context)
     except:
         return redirect('home')
+
+# ====== edit a perticular note instance =======
+class NoteEditView(View):
+    def get(self, request, *args, **kwargs):
+            id = kwargs.get('pk')
+            note_instance = Note.objects.get(id = id)
+            form = NoteForm(instance=note_instance)
+            context = {
+                'form' : form,
+                'image' : note_instance.image
+            }
+            return render(request, 'note-edit.html', context)
+        # except:
+        #     return redirect('home')
+
+    def post(self, request, *args, **kwargs):
+        id = kwargs.get('pk')
+        try:
+            note_instance = Note.objects.get(id = id)
+            form = NoteForm(request.POST, request.FILES, instance=note_instance)
+            context = {
+                'form' : form
+            }
+            if form.is_valid():
+                form.save()
+                return redirect('home')
+            messages.error(request, 'Form is not valid!')
+            return render(request, 'note-edit.html', context)
+        except:
+            return redirect('home')

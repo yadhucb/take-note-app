@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}
-Note details
+Note Details
 {% endblock %}
 {% load static %}
 {% block content %}
@@ -11,7 +11,8 @@ Note details
             <div class="bg-white p-3 rounded shadow mt-3 h-100">
                 <div class="d-flex justify-content-end">
                     <!-- edit -->
-                    <a class="dropdown-item d-flex justify-content-around align-items-center fs-7" href="">
+                    <a class="dropdown-item d-flex justify-content-around align-items-center fs-7"
+                        href="{% url 'note-edit' note.id %}">
                         <i class="fa-solid fa-pen-to-square"></i></a>
                     <!-- delete -->
                     <a class="dropdown-item d-flex justify-content-around align-items-center fs-7" href="">

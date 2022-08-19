@@ -34,6 +34,27 @@
 
     {% include 'includes/navbar.html' %}
 
+    <!-- =============== messages ============= -->
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-7">
+            {% if messages %}
+            {% for msg in messages %}
+            <div class="alert {% if msg.tags %} alert-{{msg.tags}} {% endif %} alert-dismissible fade show"
+                role="alert">
+                <strong class="text-center">{{msg}}</strong>
+                <button type="button" id="msg-btn-cls" class="btn-close" data-bs-dismiss="alert"
+                    aria-label="Close"></button>
+            </div>
+            <script>
+
+                setTimeout(document.getElementById('msg-btn-cls').click, 5000)
+            </script>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
     {% block content %}
 
     {% endblock %}
