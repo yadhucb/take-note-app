@@ -11,6 +11,7 @@
 ## Features Added:
 
     - New Note add
+    - Feature to add images in the notes.
     - Note listing
     - Note details
     - Note searching
