@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-u*$7aeb@@m3qiivfj4ivwe-c624y(l3%sat_xlt@*$d$6!@lfa
 DEBUG = True
 ALLOWED_HOSTS = [
     'yadhu-take-note.herokuapp.com',
-    '127.0.0.1'
+    '127.0.0.1',
+    '13.201.42.83'
 ]
 
 
