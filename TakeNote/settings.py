@@ -27,7 +27,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'yadhu-take-note.herokuapp.com',
     '127.0.0.1',
-    '13.201.42.83'
+    '44.220.60.7'
 ]
 
 
