@@ -1,8 +1,9 @@
 <nav class="navbar bg-light">
     <div class="container-fluid">
-        <a href="{% url 'home' %}" class="navbar-brand logo">TakeNote</a>
-        <a href="{% url 'note-add' %}">
-            <i class="fa-solid fa-circle-plus fs-2 text-success" role="button"></i>
+        <a href="{% url 'home' %}" class="navbar-brand logo fw-bold">TakeNote</a>
+        <a href="{% url 'note-add' %}" class="text-muted fw-bold">
+            Add Note <i class="fa-solid fa-pencil"></i>
+            <!-- <i class="fa-solid fa-circle-plus fs-2 text-primary" role="button"></i> -->
         </a>
         <!-- ====== Note search ====== -->
         <form action="{% url 'note-search' %}" class="d-flex" role="search">
